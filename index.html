@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karya Nusantara - Pelestari Anggun Kriya & Busana Nusantara</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#C59B27',
+                            'gold-dark': '#A07C1C',
+                            terracotta: '#A64B2A',
+                            sand: '#F7F4EF',
+                            charcoal: '#212121',
+                            brown: '#3D2817'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-overlay {
+            background: linear-gradient(180deg, rgba(33, 33, 33, 0.2) 0%, rgba(33, 33, 33, 0.85) 100%);
+        }
+        .hero-pattern {
+            background-color: #3D2817;
+            background-image: radial-gradient(#C59B27 0.75px, transparent 0.75px), radial-gradient(#C59B27 0.75px, #3D2817 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.95;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-brand-sand font-sans text-brand-charcoal antialiased flex flex-col min-h-screen selection:bg-brand-gold selection:text-white">
+
+    <!-- Bar Pengumuman Atas -->
+    <div class="bg-brand-brown text-amber-100 text-xs py-2 px-4 text-center font-medium tracking-wide flex justify-between items-center px-6 md:px-12">
+        <span class="hidden md:inline">✨ Bangga Buatan Indonesia - Gratis Ongkir Seluruh Jawa Minimal Rp 350.000</span>
+        <span class="w-full md:w-auto text-center">Hubungi Kami: <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-gold transition">+62 812-3456-7890</a></span>
+        <div class="hidden md:flex gap-3">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-brand-gold transition" aria-label="Tautan Instagram"><i data-lucide="instagram" class="w-3.5 h-3.5"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-brand-gold transition" aria-label="Tautan Facebook"><i data-lucide="facebook" class="w-3.5 h-3.5"></i></a>
+        </div>
+    </div>
+
+    <!-- Navigasi Utama -->
+    <header class="sticky top-0 z-40 bg-brand-sand/90 backdrop-blur-md border-b border-stone-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Tautan Logo Brand -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-brand-brown text-brand-gold flex items-center justify-center font-serif text-xl font-bold shadow-md group-hover:bg-brand-gold group-hover:text-brand-brown transition duration-300">
+                    KN
+                </div>
+                <div>
+                    <span class="font-serif text-xl md:text-2xl font-bold tracking-wider text-brand-brown block leading-none">KARYA</span>
+                    <span class="text-[10px] tracking-[0.25em] text-brand-terracotta uppercase font-bold">Nusantara</span>
+                </div>
+            </a>
+
+            <!-- Tautan Menu Desktop -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-700">
+                <a href="#home" class="hover:text-brand-terracotta transition border-b-2 border-transparent hover:border-brand-terracotta py-1">Beranda</a>
+                <a href="#katalog" class="hover:text-brand-terracotta transition border-b-2 border-transparent hover:border-brand-terracotta py-1">Katalog Produk</a>
+                <a href="#ai-assistant" class="hover:text-brand-terracotta transition border-b-2 border-transparent hover:border-brand-terracotta py-1 flex items-center gap-1.5 text-brand-terracotta">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-brand-gold animate-pulse"></i> AI Stylist
+                </a>
+                <a href="#cerita" class="hover:text-brand-terracotta transition border-b-2 border-transparent hover:border-brand-terracotta py-1">Cerita Kami</a>
+                <a href="#kontak" class="hover:text-brand-terracotta transition border-b-2 border-transparent hover:border-brand-terracotta py-1">Kontak</a>
+            </nav>
+
+            <!-- Aksi Tombol & Keranjang -->
+            <div class="flex items-center gap-3">
+                <button type="button" onclick="toggleSearchModal()" class="p-2 rounded-full hover:bg-stone-200/60 text-stone-700 transition flex items-center justify-center" aria-label="Buka Pencarian">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </button>
+
+                <button type="button" onclick="toggleCartDrawer()" class="relative p-2 rounded-full bg-brand-brown text-amber-100 hover:bg-brand-terracotta transition shadow-sm flex items-center justify-center" aria-label="Buka Keranjang Belanja">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-brand-terracotta text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-brand-sand hidden">0</span>
+                </button>
+
+                <button type="button" id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-stone-800 focus:outline-none" aria-label="Menu Mobile">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dropdown Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-sand border-b border-stone-200 px-6 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-stone-800 font-medium border-b border-stone-200/50">Beranda</a>
+            <a href="#katalog" onclick="toggleMobileMenu()" class="block py-2 text-stone-800 font-medium border-b border-stone-200/50">Katalog Produk</a>
+            <a href="#ai-assistant" onclick="toggleMobileMenu()" class="block py-2 text-brand-terracotta font-semibold border-b border-stone-200/50 flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4 text-brand-gold"></i> AI Stylist & Rekomendasi
+            </a>
+            <a href="#cerita" onclick="toggleMobileMenu()" class="block py-2 text-stone-800 font-medium border-b border-stone-200/50">Cerita Kami</a>
+            <a href="#kontak" onclick="toggleMobileMenu()" class="block py-2 text-stone-800 font-medium">Kontak</a>
+        </div>
+    </header>
+
+    <!-- Modal Pencarian -->
+    <div id="search-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-start justify-center pt-20 px-4 hidden transition-opacity duration-300">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl p-6 relative animate-in fade-in zoom-in-95 duration-200">
+            <button type="button" onclick="toggleSearchModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 p-1" aria-label="Tutup pencarian">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h3 class="font-serif text-xl text-brand-brown font-bold mb-4">Cari Karya Tradisional</h3>
+            <div class="relative">
+                <i data-lucide="search" class="w-5 h-5 absolute left-4 top-3.5 text-stone-400"></i>
+                <input type="text" id="search-input" onkeyup="handleSearch(event)" placeholder="Cari 'Kebaya Encim', 'Gelas Keramik', 'Tas Tenun'..." class="w-full pl-12 pr-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-brand-gold focus:outline-none text-stone-800">
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs text-stone-600">
+                <span class="font-semibold self-center">Pencarian Populer:</span>
+                <a href="#katalog" onclick="quickSearch('Kebaya')" class="bg-stone-100 hover:bg-stone-200 px-3 py-1 rounded-full border text-stone-700">Kebaya Modern</a>
+                <a href="#katalog" onclick="quickSearch('Gelas')" class="bg-stone-100 hover:bg-stone-200 px-3 py-1 rounded-full border text-stone-700">Gelas Keramik</a>
+                <a href="#katalog" onclick="quickSearch('Tenun')" class="bg-stone-100 hover:bg-stone-200 px-3 py-1 rounded-full border text-stone-700">Tas Tenun</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="flex-grow">
+        <!-- Seksi Hero Utama -->
+        <section id="home" class="relative hero-pattern text-amber-50 min-h-[85vh] flex items-center py-16 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-xs font-semibold tracking-wider uppercase">
+                            <i data-lucide="award" class="w-4 h-4"></i> Mahakarya Kriya Nusantara
+                        </div>
+                        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
+                            Anggun Berbusana,<br>
+                            <span class="text-brand-gold italic">Estetik</span> Dalam Keseharian.
+                        </h1>
+                        <p class="text-stone-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed mx-auto lg:mx-0">
+                            Koleksi kebanggaan buatan tangan pengrajin lokal. Menghadirkan Baju Kebaya Modern yang anggun, Gelas Keramik bernilai seni tinggi, dan Tas Tenun etnik eksklusif.
+                        </p>
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#katalog" class="w-full sm:w-auto px-8 py-4 bg-brand-gold hover:bg-brand-gold-dark text-brand-brown font-bold rounded-xl transition duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-center">
+                                Jelajahi Koleksi <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </a>
+                            <a href="https://wa.me/6281234567890?text=Halo%20Karya%20Nusantara,%20saya%20ingin%20konsultasi%20pemesanan%20produk" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 border-2 border-amber-100/40 hover:border-brand-gold hover:bg-brand-brown/50 text-amber-100 font-semibold rounded-xl transition duration-300 text-center flex items-center justify-center gap-2">
+                                <i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i> Tanya Via WhatsApp
+                            </a>
+                        </div>
+                        
+                        <div class="pt-8 border-t border-stone-700/60 grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <p class="font-serif text-2xl font-bold text-brand-gold">100%</p>
+                                <p class="text-xs text-stone-400 mt-1">Pengrajin Lokal</p>
+                            </div>
+                            <div>
+                                <p class="font-serif text-2xl font-bold text-brand-gold">Autentik</p>
+                                <p class="text-xs text-stone-400 mt-1">Bahan Premium</p>
+                            </div>
+                            <div>
+                                <p class="font-serif text-2xl font-bold text-brand-gold">4.9/5.0</p>
+                                <p class="text-xs text-stone-400 mt-1">Kepuasan Pelanggan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Hero Banner (Tas Tenun Etnik) -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <a href="#katalog" onclick="openProductModal(5)" class="block relative rounded-2xl overflow-hidden shadow-2xl border-4 border-brand-gold/30 group bg-stone-900">
+                                <img src="https://cdn.phototourl.com/free/2026-08-13-d4b47a4e-033c-4ed8-8a7b-9c3481a8cdfa.png" alt="Tas Tenun Ikat Toraja Premium" class="w-full h-[450px] object-cover object-center group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6">
+                                    <span class="text-xs font-semibold uppercase tracking-wider text-brand-gold">Kriya Tenun Handcrafted</span>
+                                    <h3 class="font-serif text-2xl text-white font-bold">Tas Tenun Ikat Toraja Premium</h3>
+                                    <p class="text-stone-300 text-sm mt-1">Sentuhan kain tenun etnik otentik karya pengrajin tradisional.</p>
+                                    <span class="mt-3 inline-flex items-center text-xs font-bold text-brand-gold group-hover:underline gap-1">
+                                        Lihat Produk <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kartu Sorotan Kategori -->
+        <section class="py-12 bg-stone-100 border-b border-stone-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <a href="#katalog" onclick="filterCategory('kebaya')" class="group p-6 rounded-2xl bg-white border border-stone-200/80 shadow-sm hover:shadow-md transition flex items-center gap-5 cursor-pointer">
+                        <div class="w-16 h-16 rounded-xl bg-amber-100 text-brand-brown flex items-center justify-center shrink-0 group-hover:bg-brand-brown group-hover:text-brand-gold transition duration-300">
+                            <i data-lucide="sparkles" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-lg text-brand-brown group-hover:text-brand-terracotta transition">Kebaya Modern</h3>
+                            <p class="text-stone-500 text-xs mt-1">Busana etnik modern untuk momen istimewa & harian.</p>
+                        </div>
+                    </a>
+
+                    <a href="#katalog" onclick="filterCategory('keramik')" class="group p-6 rounded-2xl bg-white border border-stone-200/80 shadow-sm hover:shadow-md transition flex items-center gap-5 cursor-pointer">
+                        <div class="w-16 h-16 rounded-xl bg-orange-100 text-brand-terracotta flex items-center justify-center shrink-0 group-hover:bg-brand-terracotta group-hover:text-white transition duration-300">
+                            <i data-lucide="coffee" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-lg text-brand-brown group-hover:text-brand-terracotta transition">Gelas Keramik</h3>
+                            <p class="text-stone-500 text-xs mt-1">Kerajinan tanah liat buatan tangan bercita rasa seni.</p>
+                        </div>
+                    </a>
+
+                    <a href="#katalog" onclick="filterCategory('tenun')" class="group p-6 rounded-2xl bg-white border border-stone-200/80 shadow-sm hover:shadow-md transition flex items-center gap-5 cursor-pointer">
+                        <div class="w-16 h-16 rounded-xl bg-yellow-100 text-brand-gold-dark flex items-center justify-center shrink-0 group-hover:bg-brand-gold group-hover:text-brand-brown transition duration-300">
+                            <i data-lucide="shopping-bag" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-lg text-brand-brown group-hover:text-brand-terracotta transition">Tas Tenun</h3>
+                            <p class="text-stone-500 text-xs mt-1">Aksesori tas kain tenun tradisional yang fungsional.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seksi Katalog Produk -->
+        <section id="katalog" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-xs font-bold text-brand-terracotta uppercase tracking-widest">Koleksi Terlengkap</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-brown mt-2">Karya Unggulan Nusantara</h2>
+                    <p class="text-stone-600 mt-3 text-sm sm:text-base">Pilih produk kriya favorit Anda buatan seniman & pengrajin berpengalaman.</p>
+                    
+                    <!-- Tombol Filter Kategori -->
+                    <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8">
+                        <button type="button" onclick="filterCategory('all')" id="btn-cat-all" class="cat-btn active px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition border border-stone-300 bg-brand-brown text-white">Semua Produk</button>
+                        <button type="button" onclick="filterCategory('kebaya')" id="btn-cat-kebaya" class="cat-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition border border-stone-300 bg-white text-stone-700 hover:bg-stone-100">Baju Kebaya</button>
+                        <button type="button" onclick="filterCategory('keramik')" id="btn-cat-keramik" class="cat-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition border border-stone-300 bg-white text-stone-700 hover:bg-stone-100">Gelas Keramik</button>
+                        <button type="button" onclick="filterCategory('tenun')" id="btn-cat-tenun" class="cat-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition border border-stone-300 bg-white text-stone-700 hover:bg-stone-100">Tas Tenun</button>
+                    </div>
+                </div>
+
+                <!-- Grid Produk -->
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Produk dikirimkan secara dinamis oleh JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seksi Asisten AI Gemini -->
+        <section id="ai-assistant" class="py-16 bg-stone-900 text-amber-50 relative overflow-hidden">
+            <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5 space-y-5">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-semibold">
+                            <i data-lucide="bot" class="w-4 h-4"></i> Asisten AI Gaya & Kriya
+                        </div>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight">
+                            Konsultasi Gaya Etnik & Rekomendasi Hadiah
+                        </h2>
+                        <p class="text-stone-300 text-sm leading-relaxed">
+                            Bingung memilih busana kebaya yang cocok untuk acara perkawinan atau mencari kado cenderamata tas tenun? Tanyakan pada Asisten Pintar AI kami!
+                        </p>
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-brand-gold text-brand-brown flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
+                                <p class="text-xs text-stone-300"><strong class="text-white">Rekomendasi Kebaya:</strong> Padu padan selaras untuk pesta, wisuda, atau kasual.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-brand-gold text-brand-brown flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
+                                <p class="text-xs text-stone-300"><strong class="text-white">Kartu Ucapan Hadiah:</strong> Generator kata-kata hangat untuk souvenir & kado.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulir Interaktif AI -->
+                    <div class="lg:col-span-7 bg-stone-800/90 border border-stone-700 p-6 sm:p-8 rounded-2xl shadow-xl">
+                        <div class="flex items-center justify-between border-b border-stone-700 pb-4 mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-brand-gold text-brand-brown flex items-center justify-center font-bold">
+                                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-sm text-white">AI Stylist & Consultant</h3>
+                                    <p class="text-[11px] text-stone-400">Powered by Gemini AI</p>
+                                </div>
+                            </div>
+                            <span class="text-[10px] bg-green-900/60 text-green-300 border border-green-700 px-2.5 py-1 rounded-full font-medium">Aktif</span>
+                        </div>
+
+                        <form id="ai-form" onsubmit="handleAiSubmit(event)" class="space-y-4">
+                            <div>
+                                <label for="ai-mode" class="block text-xs font-semibold text-stone-300 mb-1">Pilih Bantuan AI:</label>
+                                <select id="ai-mode" class="w-full bg-stone-900 border border-stone-700 text-stone-200 text-sm rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-brand-gold focus:outline-none">
+                                    <option value="fashion">Konsultasi Padu Padan Kebaya & Tas Tenun</option>
+                                    <option value="gift">Rekomendasi Kado / Souvenir Keramik & Kartu Ucapan</option>
+                                    <option value="story">Panduan Perawatan & Cerita Motif Nusantara</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="ai-prompt" class="block text-xs font-semibold text-stone-300 mb-1">Pertanyaan / Deskripsi Keperluan Anda:</label>
+                                <textarea id="ai-prompt" rows="3" placeholder="Contoh: Saya butuh rekomendasi kebaya untuk wisuda bulan depan, cocoknya dipadukan dengan tas tenun warna apa ya?" class="w-full bg-stone-900 border border-stone-700 text-stone-200 text-sm rounded-xl p-3 focus:ring-2 focus:ring-brand-gold focus:outline-none placeholder-stone-500" required></textarea>
+                            </div>
+
+                            <button type="submit" id="ai-submit-btn" class="w-full py-3 bg-brand-gold hover:bg-brand-gold-dark text-brand-brown font-bold rounded-xl transition flex items-center justify-center gap-2 text-sm shadow-md cursor-pointer">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i> Minta Rekomendasi AI
+                            </button>
+                        </form>
+
+                        <!-- Kotak Respon AI -->
+                        <div id="ai-response-box" class="mt-6 pt-6 border-t border-stone-700 hidden">
+                            <h4 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4"></i> Rekomendasi Untuk Anda:
+                            </h4>
+                            <div id="ai-response-content" class="text-sm text-stone-200 leading-relaxed bg-stone-900/60 p-4 rounded-xl border border-stone-700/80 whitespace-pre-line">
+                                <!-- Keluaran AI akan ditampilkan di sini -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cerita Brand / Pengrajin -->
+        <section id="cerita" class="py-20 bg-brand-sand">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#katalog" onclick="filterCategory('keramik')" class="block rounded-2xl overflow-hidden shadow-lg group">
+                                <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=500" alt="Proses Pembuatan Keramik Tangan" class="h-64 object-cover w-full group-hover:scale-105 transition duration-500">
+                            </a>
+                            <a href="#katalog" onclick="filterCategory('tenun')" class="block rounded-2xl overflow-hidden shadow-lg mt-8 group">
+                                <img src="https://cdn.phototourl.com/free/2026-08-13-d4b47a4e-033c-4ed8-8a7b-9c3481a8cdfa.png" alt="Tenun Khas Nusantara Handcrafted" class="h-64 object-cover w-full group-hover:scale-105 transition duration-500">
+                            </a>
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-brand-brown text-amber-100 p-6 rounded-2xl shadow-xl max-w-xs hidden sm:block">
+                            <p class="font-serif font-bold text-lg text-brand-gold">Pemberdayaan UMKM</p>
+                            <p class="text-xs text-stone-300 mt-1">Merangkul lebih dari 45 pengrajin lokal dari Jawa, Bali, dan NTT.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <span class="text-xs font-bold text-brand-terracotta uppercase tracking-widest">Tentang Karya Nusantara</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-brown leading-tight">
+                            Menjaga Warisan Leluhur Dalam Setiap Sentuhan Modern
+                        </h2>
+                        <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                            Karya Nusantara berdiri dengan wujud cinta terhadap keragaman seni kriya Indonesia. Kami percaya bahwa budaya tidak hanya disimpan di museum, tetapi hidup dalam keseharian kita—melalui pakaian anggun yang kita kenakan, gelas tempat kita menikmati secangkir kopi pagi, hingga tas yang menemani langkah mobilitas sehari-hari.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-2">
+                            <div class="p-4 bg-white rounded-xl border border-stone-200">
+                                <h4 class="font-bold text-brand-brown text-sm">Sertifikat Autentik</h4>
+                                <p class="text-xs text-stone-500 mt-1">Jaminan keaslian bahan tenun & tanah liat pilihan.</p>
+                            </div>
+                            <div class="p-4 bg-white rounded-xl border border-stone-200">
+                                <h4 class="font-bold text-brand-brown text-sm">Ramah Lingkungan</h4>
+                                <p class="text-xs text-stone-500 mt-1">Menggunakan pewarna alam & material dapat didaur ulang.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bar Informasi Layanan -->
+        <section class="py-12 bg-brand-brown text-amber-100 border-t border-brand-gold/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+                    <div class="flex items-center gap-4 justify-center md:justify-start">
+                        <div class="p-3 rounded-full bg-brand-gold/20 text-brand-gold">
+                            <i data-lucide="truck" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">Pengiriman Aman</h4>
+                            <p class="text-xs text-stone-300">Garansi kemasan kayu & bubble wrap</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 justify-center md:justify-start">
+                        <div class="p-3 rounded-full bg-brand-gold/20 text-brand-gold">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">Jaminan Kualitas</h4>
+                            <p class="text-xs text-stone-300">100% buatan tangan pengrajin</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 justify-center md:justify-start">
+                        <div class="p-3 rounded-full bg-brand-gold/20 text-brand-gold">
+                            <i data-lucide="gift" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">Kemasan Hadiah</h4>
+                            <p class="text-xs text-stone-300">Gratis kotak besek & pita etnik</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 justify-center md:justify-start">
+                        <div class="p-3 rounded-full bg-brand-gold/20 text-brand-gold">
+                            <i data-lucide="headphones" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">Layanan Pesanan</h4>
+                            <p class="text-xs text-stone-300">Respon cepat via WhatsApp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer & Informasi Kontak -->
+    <footer id="kontak" class="bg-stone-950 text-stone-300 pt-16 pb-8 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-stone-800">
+                <!-- Info Brand -->
+                <div class="lg:col-span-2 space-y-4">
+                    <a href="#home" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-gold text-brand-brown flex items-center justify-center font-serif text-xl font-bold">
+                            KN
+                        </div>
+                        <div>
+                            <span class="font-serif text-2xl font-bold tracking-wider text-white block leading-none">KARYA</span>
+                            <span class="text-[10px] tracking-[0.25em] text-brand-gold uppercase font-bold">Nusantara</span>
+                        </div>
+                    </a>
+                    <p class="text-xs text-stone-400 leading-relaxed max-w-sm">
+                        Galeri UMKM pelestari karya seni kerajinan etnik Indonesia. Menghadirkan kriya berkualitas tinggi untuk melengkapi gaya hidup berbudaya.
+                    </p>
+                    <div class="flex gap-3 pt-2">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-gold hover:text-brand-brown flex items-center justify-center transition" aria-label="Instagram Karya Nusantara">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-gold hover:text-brand-brown flex items-center justify-center transition" aria-label="Facebook Karya Nusantara">
+                            <i data-lucide="facebook" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-gold hover:text-brand-brown flex items-center justify-center transition" aria-label="WhatsApp Karya Nusantara">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tautan Navigasi -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-sm mb-4">Navigasi Utama</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-brand-gold transition">Beranda Utama</a></li>
+                        <li><a href="#katalog" class="hover:text-brand-gold transition">Katalog Produk</a></li>
+                        <li><a href="#ai-assistant" class="hover:text-brand-gold transition">AI Stylist Konsultan</a></li>
+                        <li><a href="#cerita" class="hover:text-brand-gold transition">Tentang Pengrajin</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tautan Produk -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-sm mb-4">Kategori Karya</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#katalog" onclick="filterCategory('kebaya')" class="hover:text-brand-gold transition">Baju Kebaya Modern</a></li>
+                        <li><a href="#katalog" onclick="filterCategory('keramik')" class="hover:text-brand-gold transition">Gelas Keramik Artisan</a></li>
+                        <li><a href="#katalog" onclick="filterCategory('tenun')" class="hover:text-brand-gold transition">Tas Tenun Etnik</a></li>
+                        <li><a href="#katalog" onclick="filterCategory('all')" class="hover:text-brand-gold transition">Koleksi Terpopuler</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tautan Kontak -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-sm mb-4">Hubungi Galeri</h4>
+                    <ul class="space-y-2.5 text-xs text-stone-400">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-gold shrink-0"></i>
+                            <a href="https://maps.google.com/?q=Yogyakarta,Indonesia" target="_blank" rel="noopener noreferrer" class="hover:text-brand-gold transition">
+                                Jl. Galeri Seni Nusantara No. 88, Yogyakarta, Indonesia
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-brand-gold shrink-0"></i>
+                            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="hover:text-brand-gold transition">+62 812-3456-7890</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-gold shrink-0"></i>
+                            <a href="mailto:salam@karyanusantara.id" class="hover:text-brand-gold transition">salam@karyanusantara.id</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-stone-500 gap-4">
+                <p>&copy; 2026 Karya Nusantara. Hak Cipta Dilindungi Undang-Undang.</p>
+                <div class="flex gap-4">
+                    <button type="button" class="hover:text-stone-400">Syarat & Ketentuan</button>
+                    <button type="button" class="hover:text-stone-400">Kebijakan Privasi</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Keranjang Belanja Side Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onclick="toggleCartDrawer()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                <div class="p-6 bg-brand-brown text-amber-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-gold"></i>
+                        <h3 class="font-serif font-bold text-lg text-white">Keranjang Belanja</h3>
+                    </div>
+                    <button type="button" onclick="toggleCartDrawer()" class="p-1 hover:text-brand-gold text-stone-300" aria-label="Tutup Keranjang">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-stone-100">
+                    <!-- Barang Keranjang Dinamis -->
+                </div>
+
+                <div class="p-6 bg-stone-50 border-t border-stone-200 space-y-4">
+                    <div class="flex justify-between text-sm text-stone-600">
+                        <span>Total Ringkasan:</span>
+                        <span id="cart-total" class="font-serif font-bold text-lg text-brand-brown">Rp 0</span>
+                    </div>
+                    <p class="text-[11px] text-stone-500 italic">*Pemesanan dilanjutkan melalui WhatsApp secara otomatis untuk verifikasi stok & pengiriman.</p>
+                    <button type="button" id="whatsapp-checkout-btn" onclick="checkoutToWhatsApp()" class="w-full py-3.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 text-center shadow-md cursor-pointer">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i> Pesan via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detail Produk -->
+    <div id="product-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col md:flex-row">
+            <button type="button" onclick="closeProductModal()" class="absolute top-4 right-4 z-10 p-2 bg-stone-900/60 text-white rounded-full hover:bg-stone-900 transition flex items-center justify-center" aria-label="Tutup modal">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            
+            <div class="md:w-1/2 h-64 md:h-auto bg-stone-100 relative">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+            </div>
+            
+            <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto">
+                <div>
+                    <span id="modal-category" class="text-[10px] font-bold uppercase tracking-widest text-brand-terracotta bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200"></span>
+                    <h3 id="modal-title" class="font-serif text-2xl font-bold text-brand-brown mt-3"></h3>
+                    <p id="modal-price" class="text-xl font-bold text-brand-gold-dark mt-2"></p>
+                    
+                    <div class="mt-4 border-t border-stone-200 pt-4">
+                        <h4 class="text-xs font-bold text-stone-700 uppercase tracking-wider mb-1">Deskripsi Kriya:</h4>
+                        <p id="modal-desc" class="text-stone-600 text-xs sm:text-sm leading-relaxed"></p>
+                    </div>
+
+                    <div id="modal-spec" class="mt-4 bg-stone-50 p-3 rounded-lg text-xs space-y-1 text-stone-600">
+                        <!-- Spesifikasi dinamis -->
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-stone-200 flex gap-3">
+                    <button type="button" id="modal-add-btn" class="flex-1 py-3 bg-brand-brown hover:bg-brand-terracotta text-white font-bold rounded-xl transition flex items-center justify-center gap-2 text-xs sm:text-sm shadow-md cursor-pointer">
+                        <i data-lucide="shopping-bag" class="w-4 h-4"></i> Tambah Ke Keranjang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chatbot Widget Button -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
+        <div id="chat-popup" class="hidden bg-white p-4 rounded-2xl shadow-2xl border border-stone-200 w-72 mb-2 animate-in fade-in slide-in-from-bottom-5">
+            <div class="flex justify-between items-center border-b pb-2 mb-2">
+                <span class="font-serif font-bold text-xs text-brand-brown">Mba Naya - Asisten Toko</span>
+                <button type="button" onclick="toggleFloatingChat()" class="text-stone-400 hover:text-stone-700"><i data-lucide="x" class="w-4 h-4"></i></button>
+            </div>
+            <p class="text-xs text-stone-600 leading-relaxed">Sugeng rawuh! Ada yang bisa saya bantu terkait produk kebaya, keramik, atau tas tenun kami?</p>
+            <a href="https://wa.me/6281234567890?text=Halo%20Mba%20Naya,%20saya%20butuh%20bantuan%20pilihan%20produk" target="_blank" rel="noopener noreferrer" class="mt-3 block text-center py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-bold transition">
+                Chat Live WA
+            </a>
+        </div>
+
+        <button type="button" onclick="toggleFloatingChat()" class="p-4 bg-brand-gold hover:bg-brand-gold-dark text-brand-brown rounded-full shadow-2xl transition duration-300 transform hover:scale-105 flex items-center justify-center" aria-label="Buka Chat Asisten">
+            <i data-lucide="message-square" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <!-- Script Data & Interaktivitas JavaScript -->
+    <script>
+        // Kunci API Gemini
+        const apiKey = "";
+
+        // Basis Data Produk Katalog
+        const products = [
+            {
+                id: 1,
+                name: "Kebaya Modern Encim Silk",
+                category: "kebaya",
+                price: 485000,
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=600",
+                description: "Kebaya encim berbahan sutra katun premium dengan bordir halus motif flora Nusantara. Sangat nyaman, adem, dan cocok untuk acara formal maupun santai.",
+                specs: "Bahan: Sutra Katun | Ukuran: S, M, L, XL | Warna: Merah Mawar & Gold"
+            },
+            {
+                id: 2,
+                name: "Kebaya Kutubaru Brokat Heritage",
+                category: "kebaya",
+                price: 520000,
+                rating: 5.0,
+                image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=600",
+                description: "Desain klasik kutubaru diselaraskan dengan brokat renda pilihan. Memberikan siluet anggun dan elegan untuk wisuda dan pesta pernikahan.",
+                specs: "Bahan: Brokat Perancis & Furing Silk | Ukuran: M, L, XXL | Warna: Mutiara Putih"
+            },
+            {
+                id: 3,
+                name: "Gelas Keramik Kasongan Handcrafted",
+                category: "keramik",
+                price: 95000,
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600",
+                description: "Cangkir/gelas keramik tanah liat berkualitas karya pengrajin Kasongan. Dipproses oven suhu tinggi dengan glasir alami ramah lingkungan.",
+                specs: "Kapasitas: 320 ml | Tahan Panas & Microwave Safe | Material: Clay Keramik"
+            },
+            {
+                id: 4,
+                name: "Gelas Keramik Etnik Tekstur Kayu",
+                category: "keramik",
+                price: 110000,
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=600",
+                description: "Gelas estetis bermotif ulir urat kayu alami. Menambah kehangatan suasana minum teh atau kopi Anda bersama keluarga.",
+                specs: "Kapasitas: 350 ml | Diameter: 8 cm | Hand-turned Ceramic"
+            },
+            {
+                id: 5,
+                name: "Tas Tenun Ikat Toraja Premium",
+                category: "tenun",
+                price: 345000,
+                rating: 4.9,
+                image: "https://cdn.phototourl.com/free/2026-08-13-d4b47a4e-033c-4ed8-8a7b-9c3481a8cdfa.png",
+                description: "Tas etnik terbuat dari kain tenun ikat asli Toraja yang dipadukan dengan aksen pengerjaan tangan berdedikasi tinggi. Elegan, kuat, dan fungsional.",
+                specs: "Bahan: Kain Tenun Asli & Kulit PU | Kompartemen Luas | Zipper Berkualitas"
+            },
+            {
+                id: 6,
+                name: "Tas Clutch Tenun Jepara Gold",
+                category: "tenun",
+                price: 275000,
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600",
+                description: "Clutch genggam pesta dengan corak tenun troso Jepara berserat emas. Mewah untuk mendampingi busana kebaya pesta Anda.",
+                specs: "Dimensi: 28 x 18 cm | Tali Rantai Emas Dapat Dilepas | Interior Beludru"
+            }
+        ];
+
+        let cart = [];
+
+        // Inisialisasi Aplikasi
+        window.onload = function() {
+            lucide.createIcons();
+            renderProducts(products);
+            updateCartUI();
+        };
+
+        // Mengirimkan Kartu Produk
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            if(items.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-stone-500">
+                        <i data-lucide="package-open" class="w-12 h-12 mx-auto mb-3 opacity-40"></i>
+                        <p class="font-bold">Produk tidak ditemukan.</p>
+                        <p class="text-xs">Coba gunakan kata kunci pencarian lainnya.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            items.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'group bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between';
+                card.innerHTML = `
+                    <div>
+                        <div onclick="openProductModal(${product.id})" class="cursor-pointer relative overflow-hidden h-64 bg-stone-100">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 left-3 bg-brand-brown/80 backdrop-blur-md text-amber-100 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                                ${product.category.toUpperCase()}
+                            </span>
+                            <span class="absolute bottom-3 right-3 p-2 bg-white/90 hover:bg-brand-gold text-brand-brown rounded-full shadow-md transition transform translate-y-10 group-hover:translate-y-0" title="Lihat Detail Modal">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-1 text-amber-500 text-xs mb-1">
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                <span class="font-bold text-stone-700">${product.rating}</span>
+                            </div>
+                            <button type="button" onclick="openProductModal(${product.id})" class="text-left w-full">
+                                <h3 class="font-serif font-bold text-lg text-brand-brown group-hover:text-brand-terracotta transition">${product.name}</h3>
+                            </button>
+                            <p class="text-stone-500 text-xs mt-2 line-clamp-2">${product.description}</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-stone-100 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-stone-400 block">Harga Karya</span>
+                            <span class="font-serif font-bold text-stone-900 text-base">Rp ${product.price.toLocaleString('id-ID')}</span>
+                        </div>
+                        <button type="button" onclick="addToCart(${product.id})" class="px-4 py-2 bg-brand-brown hover:bg-brand-terracotta text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                            <i data-lucide="plus" class="w-4 h-4"></i> Beli
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Logika Filter Kategori
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-brown', 'text-white');
+                btn.classList.add('bg-white', 'text-stone-700');
+            });
+
+            const activeBtn = document.getElementById(`btn-cat-${category}`);
+            if(activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-stone-700');
+                activeBtn.classList.add('bg-brand-brown', 'text-white');
+            }
+
+            if(category === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        // Fitur Pencarian
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if(!modal.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+            }
+        }
+
+        function handleSearch(e) {
+            const query = e.target.value.toLowerCase();
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.description.toLowerCase().includes(query) ||
+                p.category.toLowerCase().includes(query)
+            );
+            renderProducts(filtered);
+            if(e.key === 'Enter') {
+                toggleSearchModal();
+                document.getElementById('katalog').scrollIntoView({behavior: 'smooth'});
+            }
+        }
+
+        function quickSearch(keyword) {
+            document.getElementById('search-input').value = keyword;
+            handleSearch({target: {value: keyword}});
+            toggleSearchModal();
+            document.getElementById('katalog').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // Tampilan Navigasi Mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Logika Keranjang
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+
+            if(existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+
+            updateCartUI();
+            toggleCartDrawer();
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if(item) {
+                item.quantity += delta;
+                if(item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            const totalItems = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+            const totalPrice = cart.reduce((acc, curr) => acc + (curr.price * curr.quantity), 0);
+
+            if(totalItems > 0) {
+                badge.innerText = totalItems;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            cartTotal.innerText = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+
+            if(cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-12 text-stone-400">
+                        <i data-lucide="shopping-bag" class="w-12 h-12 mx-auto mb-2 opacity-30"></i>
+                        <p class="text-xs font-semibold">Keranjang Anda masih kosong</p>
+                        <p class="text-[10px] text-stone-400 mt-1">Jelajahi produk dan tambahkan ke sini.</p>
+                    </div>
+                `;
+            } else {
+                cartItemsContainer.innerHTML = '';
+                cart.forEach(item => {
+                    const el = document.createElement('div');
+                    el.className = 'py-3 flex items-center justify-between gap-3';
+                    el.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-lg object-cover">
+                            <div>
+                                <h4 class="font-bold text-xs text-brand-brown">${item.name}</h4>
+                                <p class="text-[11px] text-stone-500">Rp ${item.price.toLocaleString('id-ID')}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 bg-stone-100 rounded-lg p-1">
+                            <button type="button" onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 flex items-center justify-center rounded bg-white text-stone-700 hover:bg-stone-200 font-bold text-xs">-</button>
+                            <span class="text-xs font-bold px-1">${item.quantity}</span>
+                            <button type="button" onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 flex items-center justify-center rounded bg-white text-stone-700 hover:bg-stone-200 font-bold text-xs">+</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(el);
+                });
+            }
+            lucide.createIcons();
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        // Alur Pemesanan Ke WhatsApp
+        function checkoutToWhatsApp() {
+            if(cart.length === 0) {
+                return;
+            }
+
+            let message = "Halo Karya Nusantara, saya ingin memesan item berikut:\n\n";
+            let grandTotal = 0;
+
+            cart.forEach((item, idx) => {
+                const subtotal = item.price * item.quantity;
+                grandTotal += subtotal;
+                message += `${idx + 1}. ${item.name} (${item.quantity}x) = Rp ${subtotal.toLocaleString('id-ID')}\n`;
+            });
+
+            message += `\n*Total Tagihan: Rp ${grandTotal.toLocaleString('id-ID')}*`;
+            message += `\n\nMohon info ketersediaan stok dan rekening pembayaran. Terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/6281234567890?text=${encodedMessage}`, '_blank');
+        }
+
+        // Modal Produk
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if(!product) return;
+
+            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-title').innerText = product.name;
+            document.getElementById('modal-category').innerText = product.category;
+            document.getElementById('modal-price').innerText = `Rp ${product.price.toLocaleString('id-ID')}`;
+            document.getElementById('modal-desc').innerText = product.description;
+            document.getElementById('modal-spec').innerText = product.specs;
+            
+            const addBtn = document.getElementById('modal-add-btn');
+            addBtn.onclick = function() {
+                addToCart(product.id);
+                closeProductModal();
+            };
+
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        // Panggilan API Gemini dengan Penanganan Backoff
+        async function callGeminiApi(promptText) {
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: promptText }] }],
+                systemInstruction: {
+                    parts: [{
+                        text: "Anda adalah Asisten Pakar Kriya & Busana Tradisional dari UMKM 'Karya Nusantara'. Berikan jawaban yang ramah, santun berbudaya, informatif, dan praktis dalam Bahasa Indonesia. Produk unggulan toko kami adalah Baju Kebaya Modern, Gelas Keramik Artisan, dan Tas Tenun Etnik."
+                    }]
+                }
+            };
+
+            const delays = [1000, 2000, 4000, 8000, 16000];
+
+            for (let i = 0; i < delays.length; i++) {
+                try {
+                    const response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        return data.candidates?.[0]?.content?.parts?.[0]?.text || "Terima kasih, namun kami belum dapat memproses rekomendasi saat ini.";
+                    }
+                } catch (error) {
+                    // Retry silently
+                }
+                await new Promise(res => setTimeout(res, delays[i]));
+            }
+
+            throw new Error("Gagal menghubungkan ke layanan Asisten AI.");
+        }
+
+        async function handleAiSubmit(e) {
+            e.preventDefault();
+            const mode = document.getElementById('ai-mode').value;
+            const userPrompt = document.getElementById('ai-prompt').value;
+            const submitBtn = document.getElementById('ai-submit-btn');
+            const responseBox = document.getElementById('ai-response-box');
+            const responseContent = document.getElementById('ai-response-content');
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Memproses dengan AI...`;
+            lucide.createIcons();
+
+            let fullPrompt = "";
+            if(mode === 'fashion') {
+                fullPrompt = `Berikan panduan padu padan busana etnik untuk pertanyaan ini: "${userPrompt}". Sarankan kombinasi Baju Kebaya Modern dan Tas Tenun yang serasi beserta tips pilihan warna.`;
+            } else if(mode === 'gift') {
+                fullPrompt = `Berikan rekomendasi paket hadiah souvenir (misal Gelas Keramik atau Tas Tenun) dan buatkan draf ucapan kado yang hangat untuk permintaan ini: "${userPrompt}".`;
+            } else {
+                fullPrompt = `Jelaskan nilai budaya atau panduan perawatan kriya (kebaya/keramik/tenun) terkait topik ini: "${userPrompt}".`;
+            }
+
+            try {
+                const resultText = await callGeminiApi(fullPrompt);
+                responseContent.innerText = resultText;
+                responseBox.classList.remove('hidden');
+            } catch (err) {
+                responseContent.innerText = "Mohon maaf, koneksi Asisten AI sedang bermasalah. Anda dapat berkonsultasi langsung via WhatsApp kami.";
+                responseBox.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i data-lucide="sparkles" class="w-4 h-4"></i> Minta Rekomendasi AI`;
+                lucide.createIcons();
+            }
+        }
+
+        // Sakelar Chat Floating
+        function toggleFloatingChat() {
+            const popup = document.getElementById('chat-popup');
+            popup.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
